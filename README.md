@@ -11,7 +11,7 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-<h3>Primeira Expecificação 🔴</h3>
+<h3>Primeira Expecificação 🟠</h3>
      <p>
       Uma rede de academias está solicitando a confecção de um sistema, que suporte a prescrição de programas de treinamento, aulas, agendamento de avaliação, etc. Num       primeiro momento, o foco é a prescrição de programas de treinamento. Para isso, a equipe de projeto propôs o seguinte esquema de classes, que
       descreve os tipos de equipamentos disponíveis na academia e os exercícios que fazem parte dos programas de treinamento.
@@ -20,15 +20,15 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
    <ul>
         <li> I. Forneça um esquema de criação de equipamentos que possa, sendo extensível, criar os tipos de
         equipamentos atualmente previstos. O esquema de criação deve fornecer um ponto único de criação
-        dos equipamentos. 🔴
+        dos equipamentos. 🟢
         <li> II. Será necessário fornecer o tipo de equipamento, um identificador e a quantidade destes
-        equipamentos disponíveis na academia. 🔴
+        equipamentos disponíveis na academia. 🟢
         <li> III. O esquema de criação deve funcionar de forma que se for chamado mais de uma vez para o mesmo
         identificador, ao invés de criar novo objeto, ele deverá recuperar o objeto existente, atualizar a
-        quantidade, adicionando a nova quantidade passada na criação e retorná-lo. 🔴
+        quantidade, adicionando a nova quantidade passada na criação e retorná-lo. 🟠
         <li> IV. Para garantir a extensibilidade, deve ser mantido arquivo de configuração, em um formato
         chave=valor, onde serão colocados como chaves os tipos de equipamento e como valor, a classe
-        que os representa. Por exemplo: Maquina=br.edu.ifba.inf011.aval1.Maquina. 🔴
+        que os representa. Por exemplo: Maquina=br.edu.ifba.inf011.aval1.Maquina. 🟢
         <li> V. Forneça um esquema de criação de Exercícios, que permita a criação de exercícios, indicando o seu
         nome, os seus tipos (Resistido, Funcional, Cardiovascular, Mobilidade), os grupos musculares
         envolvidos (quando for o caso) e os equipamentos que são utilizados na sua execução. A quantidade
