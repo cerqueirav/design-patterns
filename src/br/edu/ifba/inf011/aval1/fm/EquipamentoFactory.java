@@ -9,8 +9,8 @@ public abstract class EquipamentoFactory {
 	public static Equipamento novoEquipamento(TipoEquipamento tipo, String identificador, int quantidade) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		EquipamentoFactory factory = 
 				(EquipamentoFactory) Class.forName(tipo.getFactoryName()).getConstructor().newInstance();
-		return factory.createProduto(identificador, quantidade);
+		return factory.createEquipamento(identificador, quantidade);
 	}
 
-	public abstract  Equipamento createProduto(String identificador, int quantidade);
+	public abstract  Equipamento createEquipamento(String identificador, int quantidade);
 }
