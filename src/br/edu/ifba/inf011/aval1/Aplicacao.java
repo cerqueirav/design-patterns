@@ -22,6 +22,7 @@ public class Aplicacao {
 		System.out.println(equip03);	
 	}
 	
+
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Aplicacao app = new Aplicacao();
 		app.rodarQ1();

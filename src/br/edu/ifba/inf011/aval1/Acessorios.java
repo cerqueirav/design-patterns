@@ -4,20 +4,36 @@ import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
 
 public class Acessorios extends Equipamento{
 	private String descricao;
+	private static Acessorios instance;
 	
-	public Acessorios(Acessorios acessorios) {
+	private Acessorios(Acessorios acessorios) {
 		super(acessorios);
 	}
 	
-	public Acessorios(String identificador, int quantidade) {
+	private Acessorios(String identificador, int quantidade) {
 		super(identificador, quantidade);
 	}
 	
-	public Acessorios(String identificador, int quantidade, String descricao) {
+	private Acessorios(String identificador, int quantidade, String descricao) {
 		super(identificador, quantidade);
 		this.descricao = descricao;
 	}
 	
+	public static Acessorios getInstance(Acessorios acessorios) {
+		if (instance == null) {
+			instance = new Acessorios(acessorios);
+		}
+		return instance;
+	}
+	
+	public static Acessorios getInstance(String identificador, int quantidade) {
+		if (instance == null) {
+			instance = new Acessorios(identificador, quantidade);
+		}
+		return (Acessorios) instance;
+	}
+	
+
 	public String getDescricao() {
 		return descricao;
 	}

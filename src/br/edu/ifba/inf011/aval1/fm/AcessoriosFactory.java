@@ -8,6 +8,6 @@ public class AcessoriosFactory extends EquipamentoFactory{
 	@Override
 	public Equipamento createEquipamento(String identificador, int quantidade) {
 		// TODO Auto-generated method stub
-		return new Acessorios(identificador, quantidade);
+		return Acessorios.getInstance(identificador, quantidade);
 	}
 }

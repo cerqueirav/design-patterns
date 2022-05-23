@@ -16,16 +16,8 @@ public abstract class Equipamento implements Prototipavel{
 		this.quantidade = quantidade;
 	}
 
-	public String getIdentificador() {
-		return identificador;
-	}
-
 	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
 	}
 
 	public void setQuantidade(int quantidade) {
