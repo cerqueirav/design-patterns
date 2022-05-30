@@ -25,14 +25,14 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
         equipamentos disponíveis na academia. 🟢
         <li> III. O esquema de criação deve funcionar de forma que se for chamado mais de uma vez para o mesmo
         identificador, ao invés de criar novo objeto, ele deverá recuperar o objeto existente, atualizar a
-        quantidade, adicionando a nova quantidade passada na criação e retorná-lo. 🟠
+        quantidade, adicionando a nova quantidade passada na criação e retorná-lo. 🟢
         <li> IV. Para garantir a extensibilidade, deve ser mantido arquivo de configuração, em um formato
         chave=valor, onde serão colocados como chaves os tipos de equipamento e como valor, a classe
         que os representa. Por exemplo: Maquina=br.edu.ifba.inf011.aval1.Maquina. 🟢
         <li> V. Forneça um esquema de criação de Exercícios, que permita a criação de exercícios, indicando o seu
         nome, os seus tipos (Resistido, Funcional, Cardiovascular, Mobilidade), os grupos musculares
         envolvidos (quando for o caso) e os equipamentos que são utilizados na sua execução. A quantidade
-        de parâmetros é variável e exceto pelo nome, todos os parâmetros são opcionais. 🔴
+        de parâmetros é variável e exceto pelo nome, todos os parâmetros são opcionais. 🟠
      </ul>         
                 
 ##### Legenda

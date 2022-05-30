@@ -1,6 +1,6 @@
 package br.edu.ifba.inf011.aval1.builder;
 
-import br.edu.ifba.inf011.aval1.Equipamento;
+import br.edu.ifba.inf011.aval1.models.Equipamento;
 
 interface BuilderClass {
 	void reset();

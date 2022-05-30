@@ -1,7 +1,7 @@
 package br.edu.ifba.inf011.aval1.builder;
 
-import br.edu.ifba.inf011.aval1.Equipamento;
-import br.edu.ifba.inf011.aval1.Exercicio;
+import br.edu.ifba.inf011.aval1.models.Equipamento;
+import br.edu.ifba.inf011.aval1.models.Exercicio;
 
 public class ExercicioBuilder implements BuilderClass{
 	Exercicio exercicio;

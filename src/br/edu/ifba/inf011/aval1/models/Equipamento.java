@@ -1,5 +1,6 @@
-package br.edu.ifba.inf011.aval1;
+package br.edu.ifba.inf011.aval1.models;
 
+import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
 import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
 
 public abstract class Equipamento implements Prototipavel{
@@ -19,8 +20,16 @@ public abstract class Equipamento implements Prototipavel{
 	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
 	}
+	
+	public String getIdentificador() {
+		return identificador;
+	}
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	public int getQuantidade() {
+		return quantidade;
 	}
 }

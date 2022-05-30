@@ -1,4 +1,4 @@
-package br.edu.ifba.inf011.aval1;
+package br.edu.ifba.inf011.aval1.models;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package br.edu.ifba.inf011.aval1.builder;
 
 import java.util.List;
 
-import br.edu.ifba.inf011.aval1.Equipamento;
+import br.edu.ifba.inf011.aval1.models.Equipamento;
 
 
 public class Diretor {

@@ -1,7 +1,7 @@
 package br.edu.ifba.inf011.aval1.fm;
 
-import br.edu.ifba.inf011.aval1.Acessorios;
-import br.edu.ifba.inf011.aval1.Equipamento;
+import br.edu.ifba.inf011.aval1.models.Acessorios;
+import br.edu.ifba.inf011.aval1.models.Equipamento;
 
 public class AcessoriosFactory extends EquipamentoFactory{
 
