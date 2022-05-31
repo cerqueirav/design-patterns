@@ -31,7 +31,7 @@ public class CatalogoEquipamentos {
 			
 			// Verifica se é possível atualizar o equipamento (o tipo deve ser igual ao informado pelo usuario)
 			if (getClassName(identificador).equals(getClassName(tipo))){ 
-				int novaQtd = catalogo.equipamentos.get(identificador).getQuantidade() + quantidade;
+				int novaQtd = this.equipamentos.get(identificador).getQuantidade() + quantidade;
 				this.equipamentos.get(identificador).setQuantidade(novaQtd);
 			}
 			else {
@@ -59,12 +59,12 @@ public class CatalogoEquipamentos {
 	}
 	
 	public void findAll() {
-		for (Equipamento equipamento: CatalogoEquipamentos.getCatalogo().equipamentos.values()) 
+		for (Equipamento equipamento: this.equipamentos.values()) 
 			System.out.println(equipamento + "|ID: " + equipamento.getIdentificador() + " |Qtd: " + equipamento.getQuantidade());	
 	}
 
 	public String getClassName(String identificador) {
-		return CatalogoEquipamentos.getCatalogo().equipamentos.get(identificador).getClass().toString();
+		return this.equipamentos.get(identificador).getClass().toString();
 	}
 	
 	public String getClassName(TipoEquipamento tipoEquipamento) {
