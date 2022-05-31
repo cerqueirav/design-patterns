@@ -1,30 +1,59 @@
 package br.edu.ifba.inf011.aval1.models;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import br.edu.ifba.inf011.aval1.builder.TipoExercicio;
+import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
 
-public class Exercicio {
+public class Exercicio implements Prototipavel{
 	private String descricao;
-	private List<TipoExercicio> categoria;
+	private List<TipoExercicio> tipos;
 	private List<String> gruposMusculares;
 	private List<Equipamento> equipamentos;
 	
-	public Exercicio() {
-		this.descricao = "";
-		this.categoria = new ArrayList<>();
-		this.gruposMusculares = new ArrayList<>();
-		this.equipamentos = new ArrayList<>();
-	}
+	private static Exercicio instance;
 	
-	public Exercicio(Exercicio exercicio) {
-		this.descricao = exercicio.descricao;
-		this.categoria = exercicio.categoria;
-		this.gruposMusculares = exercicio.gruposMusculares;
+	private Exercicio(Exercicio exercicio) {
+		this.descricao = exercicio.getDescricao();
+		
+		this.tipos = new LinkedList<TipoExercicio>();
+		for(TipoExercicio tipo : exercicio.tipos)
+			this.tipos.add((TipoExercicio)tipo);
+		
+		this.gruposMusculares = new LinkedList<String>();
+		for (String grupo : exercicio.gruposMusculares)
+			this.gruposMusculares.add(grupo);	
+		
 		this.equipamentos = exercicio.equipamentos;
+		for (Equipamento equipamento: exercicio.equipamentos) {
+			this.equipamentos.add(equipamento);
+		}
 	}
 	
+	private Exercicio(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
+		this.descricao = descricao;
+		this.tipos = new LinkedList<TipoExercicio>(tipos);	
+		this.gruposMusculares = new LinkedList<String>(grupos);
+		this.equipamentos = new LinkedList<Equipamento>(equipamentos);
+	}
+	
+	public static Exercicio getInstance(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
+		if ((instance == null) && (validarDescricao(descricao)))
+			instance = new Exercicio(descricao, tipos, grupos, equipamentos);
+		else {
+			instance = null;
+			System.err.println("Não é possível criar o exercicio, por favor informar o nome");
+		}
+		
+		return instance;
+	}
+	
+	
+	public static boolean validarDescricao(String descricao) {
+		return (descricao.equals("")) ? false : true;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -34,18 +63,18 @@ public class Exercicio {
 	}
 	
 	public List<TipoExercicio> getCategoria() {
-		return categoria;
+		return tipos;
 	}
 	
-	public void setCategoria(TipoExercicio categoria) {
-		this.categoria.add(categoria);
+	public void addCategoria(TipoExercicio categoria) {
+		this.tipos.add(categoria);
 	}
 	
 	public List<String> getGruposMusculares() {
 		return gruposMusculares;
 	}
 	
-	public void setGrupoMuscular(String grupoMuscular) {
+	public void addGrupoMuscular(String grupoMuscular) {
 		this.gruposMusculares.add(grupoMuscular);
 	}
 	
@@ -53,7 +82,12 @@ public class Exercicio {
 		return equipamentos;
 	}
 	
-	public void setEquipamento(Equipamento equipamento) {
+	public void addEquipamento(Equipamento equipamento) {
 		this.equipamentos.add(equipamento);
+	}
+
+	@Override
+	public Prototipavel prototipar() {
+		return new Exercicio(this);
 	}
 }
