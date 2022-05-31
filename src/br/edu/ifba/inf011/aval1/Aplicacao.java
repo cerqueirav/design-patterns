@@ -2,13 +2,12 @@ package br.edu.ifba.inf011.aval1;
 
 import java.lang.reflect.InvocationTargetException;
 
-import br.edu.ifba.inf011.aval1.fm.CatalogoEquipamentos;
 import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
 
 public class Aplicacao {
 	
 	private void rodarQ1() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
-		// Q1) Criação dos Equipamentos (Testes)
+		// Criação dos Equipamentos (Testes)
 		CatalogoEquipamentos catalogo = CatalogoEquipamentos.getCatalogo();
 		
 		catalogo.cadastrar(TipoEquipamento.Halteres, "EQUIP_01", 25);	

@@ -1,9 +1,11 @@
-package br.edu.ifba.inf011.aval1.fm;
+package br.edu.ifba.inf011.aval1;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.edu.ifba.inf011.aval1.fm.EquipamentoFactory;
+import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
 import br.edu.ifba.inf011.aval1.models.Equipamento;
 
 
@@ -14,7 +16,7 @@ public class CatalogoEquipamentos {
 	
 	public static CatalogoEquipamentos getCatalogo() {
 		if (catalogo == null) 
-			catalogo = new CatalogoEquipamentos();
+			catalogo =	 new CatalogoEquipamentos();
 		
 		return CatalogoEquipamentos.catalogo;
 	}
@@ -24,10 +26,11 @@ public class CatalogoEquipamentos {
 	}
 	
 	public void cadastrar(TipoEquipamento tipo, String identificador, int quantidade) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {		
-		CatalogoEquipamentos catalogo = CatalogoEquipamentos.getCatalogo();
-		
-		if (catalogo.equipamentos.containsKey(identificador)){	// Verifica a existência do Equipamento (a partir do ID)	
-			if (getNomeClass(identificador).equals(getNomeClass(tipo))){
+		// Verifica a existência do Equipamento (através do identificador)	
+		if (this.equipamentos.containsKey(identificador)){
+			
+			// Verifica se é possível atualizar o equipamento (o tipo deve ser igual ao informado pelo usuario)
+			if (getClassName(identificador).equals(getClassName(tipo))){ 
 				int novaQtd = catalogo.equipamentos.get(identificador).getQuantidade() + quantidade;
 				this.equipamentos.get(identificador).setQuantidade(novaQtd);
 			}
@@ -36,31 +39,35 @@ public class CatalogoEquipamentos {
 			}
 		}
 		else {
+			// Criação de um novo Equipamento (identificador não associado a outro equipamento)
 			EquipamentoFactory fabrica = (EquipamentoFactory) Class.forName(tipo.getFactoryName()).getConstructor().newInstance();
 			Equipamento equipamento = fabrica.createEquipamento(identificador, quantidade);
-			CatalogoEquipamentos.catalogo.equipamentos.put(identificador, equipamento);	
+			this.equipamentos.put(equipamento.getIdentificador(), equipamento);	
 		}
 	}
 	
-	public  Equipamento listar(String codigo) {
-		 if (CatalogoEquipamentos.getCatalogo().equipamentos.get(codigo) != null)
-			 return (Equipamento) CatalogoEquipamentos.getCatalogo().equipamentos.get(codigo);
+	public Equipamento getById(String codigo) {
+		Equipamento equipamento = this.equipamentos.get(codigo);
 		 
-		return null;
+		return (Equipamento) ((equipamento != null) ? equipamento : null);
+	}
+	
+	public Equipamento getPrototype(String codigo) {
+		Equipamento equipamento = this.equipamentos.get(codigo);
+		 
+		return (Equipamento) ((equipamento != null) ? equipamento.prototipar() : null);
 	}
 	
 	public void findAll() {
 		for (Equipamento equipamento: CatalogoEquipamentos.getCatalogo().equipamentos.values()) 
-			System.out.println(equipamento + "|ID: " + equipamento.getIdentificador() + " |Qtd: " + equipamento.getQuantidade());
-		
+			System.out.println(equipamento + "|ID: " + equipamento.getIdentificador() + " |Qtd: " + equipamento.getQuantidade());	
 	}
 
-	public String getNomeClass(String identificador) {
+	public String getClassName(String identificador) {
 		return CatalogoEquipamentos.getCatalogo().equipamentos.get(identificador).getClass().toString();
 	}
 	
-	public String getNomeClass(TipoEquipamento tipoEquipamento) {
+	public String getClassName(TipoEquipamento tipoEquipamento) {
 		return "class br.edu.ifba.inf011.aval1.models." + tipoEquipamento.toString();
 	}
-	
 }
