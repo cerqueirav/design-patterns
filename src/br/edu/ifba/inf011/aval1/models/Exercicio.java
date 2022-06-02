@@ -32,17 +32,16 @@ public class Exercicio implements Prototipavel{
 	}
 	
 	private Exercicio(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
-		this.descricao = descricao;
+		this.setDescricao(descricao);
 		this.tipos = new LinkedList<TipoExercicio>(tipos);	
 		this.gruposMusculares = new LinkedList<String>(grupos);
 		this.equipamentos = new LinkedList<Equipamento>(equipamentos);
 	}
 	
 	public static Exercicio getInstance(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
-		if ((instance == null) && (validarDescricao(descricao)))
+		if ((instance == null) && (instance.validarDescricao(descricao)))
 			instance = new Exercicio(descricao, tipos, grupos, equipamentos);
 		else {
-			instance = null;
 			System.err.println("Não é possível criar o exercicio, por favor informar o nome");
 		}
 		
@@ -50,7 +49,7 @@ public class Exercicio implements Prototipavel{
 	}
 	
 	
-	public static boolean validarDescricao(String descricao) {
+	public boolean validarDescricao(String descricao) {
 		return (descricao.equals("")) ? false : true;
 	}
 

@@ -38,14 +38,14 @@ public class Maquinas extends Equipamento{
 	}
 	
 	public static Maquinas getInstance(String identificador, int quantidade) {
-		if ((instance == null) || (instance.getIdentificador() != identificador))
+		if ((instance == null) || (!instance.getIdentificador().equals(identificador)))
 			instance = new Maquinas(identificador, quantidade);
 		
 		return instance;
 	}
 	
 	public static Maquinas getInstance(Maquinas maquinas) {
-		if ((instance == null) || (instance.getIdentificador() != maquinas.getIdentificador()))
+		if ((instance == null) || (!instance.getIdentificador().equals(maquinas.getIdentificador())))
 			instance = new Maquinas(maquinas);
 		
 		return instance;

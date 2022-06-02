@@ -17,26 +17,28 @@ public class Aplicacao {
 		
 		catalogo.cadastrar(TipoEquipamento.Halteres, "EQUIP_01", 25);	
 		catalogo.cadastrar(TipoEquipamento.Halteres, "EQUIP_02", 100);
-		catalogo.cadastrar(TipoEquipamento.Halteres, "EQUIP_02", 56);
+		catalogo.cadastrar(TipoEquipamento.Halteres, "EQUIP_02", 87);
 		catalogo.cadastrar(TipoEquipamento.Acessorios, "EQUIP_03", 53);
-		catalogo.cadastrar(TipoEquipamento.Acessorios, "EQUIP_03", 74);
+		catalogo.cadastrar(TipoEquipamento.Acessorios, "EQUIP_03", 33);
 		catalogo.cadastrar(TipoEquipamento.Acessorios, "EQUIP_04", 98);
 		catalogo.cadastrar(TipoEquipamento.Maquinas, "EQUIP_05", 65);
+		catalogo.cadastrar(TipoEquipamento.Maquinas, "EQUIP_05", -55);
 		catalogo.cadastrar(TipoEquipamento.Maquinas, "EQUIP_06", 32);
 		catalogo.cadastrar(TipoEquipamento.Maquinas, "EQUIP_06", 12);
-		
-		catalogo.findAll();
+	
+		catalogo.getEquipamentos();
 	}
 	
 	private void rodarQ2() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		// Criação dos Exercicios (Testes)
+		CatalogoExercicios catalogo = CatalogoExercicios.getCatalogo();
+		
 		Equipamento equip01 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Halteres, 
 																 "EQUIP_18", 50);
 		Equipamento equip02 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Acessorios, 
 				 												 "EQUIP_35", 90);
 		Equipamento equip03 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Maquinas, 
 				 												 "EQUIP_40", 76);
-		
 		Exercicio exercicio = ExercicioBuilder.factory()
 											  .reset()
 											  .setDescricao("Leg Press 90°")
@@ -49,12 +51,12 @@ public class Aplicacao {
 											  .addEquipamento(equip03)
 											  .build();
 		
-		System.out.println(exercicio);
+		catalogo.findAll(exercicio.getDescricao());
 	}
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		Aplicacao app = new Aplicacao();
-		//app.rodarQ1();
-		app.rodarQ2();
+		app.rodarQ1();
+		//app.rodarQ2();
 	}
 }

@@ -29,7 +29,7 @@ public class Halteres extends Equipamento{
 	}
 
 	public static Halteres getInstance(String identificador, int quantidade) {
-		if ((instance == null) || (instance.getIdentificador() != identificador))	 
+		if ((instance == null) || (!instance.getIdentificador().equals(identificador)))	 
 			instance = new Halteres(identificador, quantidade);
 		else 
 			instance.setQuantidade(instance.getQuantidade() + quantidade);
@@ -38,7 +38,7 @@ public class Halteres extends Equipamento{
 	}
 	
 	public static Halteres getInstance(Halteres halteres) {
-		if ((instance == null) || (instance.getIdentificador()) != halteres.getIdentificador())	 
+		if ((instance == null) || (!instance.getIdentificador().equals(halteres.getIdentificador())))	 
 			instance = new Halteres(halteres);
 		else 
 			instance.setQuantidade(instance.getQuantidade() + halteres.getQuantidade());

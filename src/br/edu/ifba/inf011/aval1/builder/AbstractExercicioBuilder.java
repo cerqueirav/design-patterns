@@ -27,12 +27,6 @@ public abstract class AbstractExercicioBuilder<T> implements ExercicioBuilderIF<
 		
 		return this;
 	}
-
-	@Override
-	public ExercicioBuilderIF<T> setIdentificador(String identificador) {
-		this.identificador = identificador;
-		return null;
-	}
 	
 	@Override
 	public ExercicioBuilderIF<T> setDescricao(String descricao) {

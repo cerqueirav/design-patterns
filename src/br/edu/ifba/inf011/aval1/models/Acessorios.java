@@ -28,14 +28,14 @@ public class Acessorios extends Equipamento{
 	}
 	
 	public static Acessorios getInstance(String identificador, int quantidade) {
-		if ((instance == null) || (instance.getIdentificador() != identificador))
+		if ((instance == null) || (!instance.getIdentificador().equals(identificador)))
 			instance = new Acessorios(identificador, quantidade);
 			
 		return instance;
 	}
 	
 	public static Acessorios getInstance(Acessorios acessorios) {
-		if ((instance == null) || (instance.getIdentificador() != acessorios.getIdentificador()))
+		if ((instance == null) || (!instance.getIdentificador().equals(acessorios.getIdentificador())))
 			instance = new Acessorios(acessorios);
 			
 		return instance;

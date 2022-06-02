@@ -13,5 +13,5 @@ public abstract class EquipamentoFactory {
 			 return factory.createEquipamento(identificador, quantidade);
 	}
 
-	public abstract  Equipamento createEquipamento(String identificador, int quantidade);
+	public abstract Equipamento createEquipamento(String identificador, int quantidade);
 }
