@@ -1,11 +1,12 @@
 package br.edu.ifba.inf011.aval1.models;
 
-import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
 import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
 
 public abstract class Equipamento implements Prototipavel{
 	private String identificador;
 	private int quantidade;
+	
+	private static Equipamento instance;
 	
 	public Equipamento(Equipamento equipamento) {
 		this.identificador = equipamento.identificador;

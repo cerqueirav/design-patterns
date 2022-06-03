@@ -24,20 +24,17 @@ public class CatalogoEquipamentos {
 		this.equipamentos = new HashMap<String, Equipamento>();
 	}
 	
-	public void cadastrar(TipoEquipamento tipoEquipamento, String identificador, int quantidade) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {		
-		// Verifica a existência do Equipamento (através do identificador)	
+	public void addEquipamento(TipoEquipamento tipoEquipamento, String identificador, int quantidade) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {		
+		// Verifica a existencia do Equipamento no catalogo (por meio do identificador)	
 		if (this.equipamentos.containsKey(identificador)){
-			
 			// Verifica se é possível atualizar o equipamento (o tipo do equipamento deve ser igual ao informado pelo usuario)
 			if (getClassName(identificador).equals(getClassName(tipoEquipamento)))
-				
 				updateQtdById(identificador, quantidade);
 			else 
-				System.err.println("Não é possível criar o equipamento, código utilizado por outro Tipo de Equipamento");
-			
+				System.err.println("Erro ao criar o equipamento com o código: "+identificador +" (código utilizado por outro Tipo de Equipamento)");
 		}
-		else {
-			// Criação de um novo Equipamento (identificador não associado a outro equipamento)
+		else { 
+			// Criação de um novo Equipamento (cujo identificador ainda foi não associado a nenhum equipamento)
 			Equipamento equipamento = EquipamentoFactory.novoEquipamento(tipoEquipamento, identificador, quantidade);
 			
 			this.equipamentos.put(equipamento.getIdentificador(), equipamento);		
@@ -47,16 +44,16 @@ public class CatalogoEquipamentos {
 	private void updateQtdById(String identificador, int quantidade) {
 		int novaQtd = this.equipamentos.get(identificador).getQuantidade() + quantidade;
 		
-		if (quantidade > 0)
+		if (quantidade > 0) 
 			this.equipamentos.get(identificador).setQuantidade(novaQtd);
 		else
-			System.err.println("** Não foi possível atualizar o equipamento: [" + identificador + "]"+", a quantidade informada é menor ou igual a zero!**");
+			System.err.println("Erro ao atualizar o equipamento com o código: " + identificador + " (a quantidade informada deve ser maior que zero)");
 	}
 	
-	public Equipamento getEquipamentoById(String codigo) {
+	public void listarEquipamento(String codigo) {
 		Equipamento equipamento = this.equipamentos.get(codigo);
-		 
-		return (Equipamento) ((equipamento != null) ? equipamento : null);
+		
+		System.out.println("Instancia: " + equipamento + "|Id: " + equipamento.getIdentificador() + " |Qtd: " + equipamento.getQuantidade());
 	}
 	
 	public Equipamento getPrototype(String codigo) {
@@ -65,9 +62,9 @@ public class CatalogoEquipamentos {
 		return (Equipamento) ((equipamento != null) ? equipamento.prototipar() : null);
 	}
 	
-	public void getEquipamentos() {
+	public void listarEquipamentos() {
 		for (Equipamento equipamento: this.equipamentos.values()) 
-			System.out.println(equipamento + "|ID: " + equipamento.getIdentificador() + " |Qtd: " + equipamento.getQuantidade());	
+			System.out.println(equipamento + "|ID: " + equipamento.getIdentificador() + " |QTD: " + equipamento.getQuantidade());	
 	}
 
 	public String getClassName(String identificador) {
