@@ -1,8 +1,5 @@
 package br.edu.ifba.inf011.aval1.models;
 
-import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
-import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
-
 public class Halteres extends Equipamento{
 	private double peso;
 	private static Halteres instance;
@@ -45,10 +42,4 @@ public class Halteres extends Equipamento{
 	
 		return instance;
 	}
-	
-	@Override
-	public Prototipavel prototipar() {
-		return new Halteres(this);
-	}
-
 }

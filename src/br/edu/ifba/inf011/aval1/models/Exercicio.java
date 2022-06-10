@@ -2,19 +2,15 @@ package br.edu.ifba.inf011.aval1.models;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import br.edu.ifba.inf011.aval1.builder.TipoExercicio;
-import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
 
-public class Exercicio implements Prototipavel{
+public class Exercicio{
 	private String descricao;
 	private List<TipoExercicio> tipos;
 	private List<String> gruposMusculares;
 	private List<Equipamento> equipamentos;
 	
-	private static Exercicio instance;
-	
-	private Exercicio(Exercicio exercicio) {
+	public Exercicio(Exercicio exercicio) {
 		this.descricao = exercicio.getDescricao();
 		
 		this.tipos = new LinkedList<TipoExercicio>();
@@ -31,28 +27,20 @@ public class Exercicio implements Prototipavel{
 		}
 	}
 	
-	private Exercicio(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
+	public Exercicio(String descricao) {
+		this.setDescricao(descricao);
+		this.tipos = new LinkedList<TipoExercicio>();
+		this.gruposMusculares = new LinkedList<String>();
+		this.equipamentos = new LinkedList<Equipamento>();
+	}
+	
+	public Exercicio(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
 		this.setDescricao(descricao);
 		this.tipos = new LinkedList<TipoExercicio>(tipos);	
 		this.gruposMusculares = new LinkedList<String>(grupos);
 		this.equipamentos = new LinkedList<Equipamento>(equipamentos);
-	}
+	}	
 	
-	public static Exercicio getInstance(String descricao, List<TipoExercicio> tipos, List<String> grupos, List<Equipamento> equipamentos) {
-		if ((instance == null) && (instance.validarDescricao(descricao)))
-			instance = new Exercicio(descricao, tipos, grupos, equipamentos);
-		else {
-			System.err.println("Não é possível criar o exercicio, por favor informar o nome");
-		}
-		
-		return instance;
-	}
-	
-	
-	public boolean validarDescricao(String descricao) {
-		return (descricao.equals("")) ? false : true;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -84,9 +72,13 @@ public class Exercicio implements Prototipavel{
 	public void addEquipamento(Equipamento equipamento) {
 		this.equipamentos.add(equipamento);
 	}
-
+	
 	@Override
-	public Prototipavel prototipar() {
-		return new Exercicio(this);
-	}
+	public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode()) + "\n" +
+        		this.getDescricao() + "\n" +
+        		this.getCategoria() + "\n" +
+        		this.getGruposMusculares() + "\n" +
+        		this.getEquipamentos();
+    }
 }

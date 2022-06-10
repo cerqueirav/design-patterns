@@ -1,4 +1,4 @@
-	package br.edu.ifba.inf011.aval1;
+package br.edu.ifba.inf011.aval1;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -33,12 +33,12 @@ public class CatalogoEquipamentos {
 			else 
 				System.err.println("Erro ao criar o equipamento com o código: "+identificador +" (código utilizado por outro Tipo de Equipamento)");
 		}
-		else { 
-			// Criação de um novo Equipamento (cujo identificador ainda foi não associado a nenhum equipamento)
-			Equipamento equipamento = EquipamentoFactory.novoEquipamento(tipoEquipamento, identificador, quantidade);
+		
+		// Criação de um novo Equipamento (cujo identificador ainda foi não associado a nenhum equipamento)
+		Equipamento equipamento = EquipamentoFactory.novoEquipamento(tipoEquipamento, identificador, quantidade);
+		
+		this.equipamentos.put(equipamento.getIdentificador(), equipamento);		
 			
-			this.equipamentos.put(equipamento.getIdentificador(), equipamento);		
-		}	
 	}
 	
 	private void updateQtdById(String identificador, int quantidade) {
@@ -51,22 +51,9 @@ public class CatalogoEquipamentos {
 	}
 	
 	public void listarEquipamento(String codigo) {
-		Equipamento equipamento = this.equipamentos.get(codigo);
-		
-		System.out.println("Instancia: " + equipamento + "|Id: " + equipamento.getIdentificador() + " |Qtd: " + equipamento.getQuantidade());
+		System.out.println(this.equipamentos.get(codigo));	
 	}
 	
-	public Equipamento getPrototype(String codigo) {
-		Equipamento equipamento = this.equipamentos.get(codigo);
-		 
-		return (Equipamento) ((equipamento != null) ? equipamento.prototipar() : null);
-	}
-	
-	public void listarEquipamentos() {
-		for (Equipamento equipamento: this.equipamentos.values()) 
-			System.out.println(equipamento + "|ID: " + equipamento.getIdentificador() + " |QTD: " + equipamento.getQuantidade());	
-	}
-
 	public String getClassName(String identificador) {
 		return this.equipamentos.get(identificador).getClass().toString();
 	}

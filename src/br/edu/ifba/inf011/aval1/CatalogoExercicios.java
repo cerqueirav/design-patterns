@@ -24,18 +24,13 @@ public class CatalogoExercicios {
 		this.exercicios.put(exercicio.getDescricao(), exercicio);
 	}
 	
-	public void findAll(String descricao) {
-		for (Exercicio exercicio: this.catalogo.exercicios.values()) 
+	public void listar(String descricao) {
+		for (Exercicio exercicio: this.exercicios.values()) 
 			System.out.println(exercicio.getDescricao());
 	}
 	
 	public Exercicio recuperar(String descricao) {
 		Exercicio exercicio = this.exercicios.get(descricao);
 		return (exercicio != null) ? exercicio : null;
-	}
-	
-	public Exercicio getPrototype(String descricao) {
-		Exercicio exercicio = this.exercicios.get(descricao);
-		return (Exercicio) ((exercicio != null) ? exercicio.prototipar() : null);
 	}
 }

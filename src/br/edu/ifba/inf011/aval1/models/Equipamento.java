@@ -1,12 +1,8 @@
 package br.edu.ifba.inf011.aval1.models;
 
-import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
-
-public abstract class Equipamento implements Prototipavel{
+public abstract class Equipamento{
 	private String identificador;
 	private int quantidade;
-	
-	private static Equipamento instance;
 	
 	public Equipamento(Equipamento equipamento) {
 		this.identificador = equipamento.identificador;
@@ -33,4 +29,11 @@ public abstract class Equipamento implements Prototipavel{
 	public int getQuantidade() {
 		return quantidade;
 	}
+	
+	@Override
+	public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode()) +
+        		" |ID: " + this.getIdentificador()  +
+        		" |QTD: "+ this.getQuantidade();
+    }
 }

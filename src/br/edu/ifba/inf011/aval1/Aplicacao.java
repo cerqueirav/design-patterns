@@ -4,11 +4,13 @@ import java.lang.reflect.InvocationTargetException;
 
 import br.edu.ifba.inf011.aval1.builder.ExercicioBuilder;
 import br.edu.ifba.inf011.aval1.builder.TipoExercicio;
+import br.edu.ifba.inf011.aval1.fm.AcessoriosFactory;
 import br.edu.ifba.inf011.aval1.fm.EquipamentoFactory;
+import br.edu.ifba.inf011.aval1.fm.HalteresFactory;
 import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
-import br.edu.ifba.inf011.aval1.models.Acessorios;
 import br.edu.ifba.inf011.aval1.models.Equipamento;
 import br.edu.ifba.inf011.aval1.models.Exercicio;
+import br.edu.ifba.inf011.aval1.models.Acessorios;
 import br.edu.ifba.inf011.aval1.models.Halteres;
 import br.edu.ifba.inf011.aval1.models.Maquinas;
 
@@ -16,10 +18,11 @@ public class Aplicacao {
 	
 	private void rodarQ1() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		// Criação do Catalogo de Equipamentos
+		System.out.println("[Testes unitários - Q1]\n");
 		CatalogoEquipamentos catalogo = CatalogoEquipamentos.getCatalogo();
 		
 		// Testes unitários - Casos de Sucesso
-		System.out.println("Testes - Casos de Sucesso");
+		System.out.println("Testes Q1 - Casos de Sucesso");
 		
 		catalogo.addEquipamento(TipoEquipamento.Halteres, "EQUIP_01", 25);
 		catalogo.listarEquipamento("EQUIP_01");
@@ -49,10 +52,7 @@ public class Aplicacao {
 		catalogo.listarEquipamento("EQUIP_06");
 		
 		// Testes unitários - Casos de Erro (validação de quantidade e tipo do Equipamento)
-		System.out.println("\nTestes - Casos de Erro");
-		
-		catalogo.addEquipamento(TipoEquipamento.Halteres, "EQUIP_02", 0);
-		catalogo.listarEquipamento("EQUIP_02");
+		System.out.println("\nTestes Q1 - Casos de Erro");
 		
 		catalogo.addEquipamento(TipoEquipamento.Acessorios, "EQUIP_05", 46);
 		catalogo.listarEquipamento("EQUIP_05");
@@ -69,34 +69,53 @@ public class Aplicacao {
 		//catalogo.getEquipamentos();
 	}
 	
-	private void rodarQ2() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	private void rodarQ2() throws Exception {
 		// Criação dos Exercicios (Testes)
+		System.out.println("\n[Testes unitários - Q2]\n");
+		
 		CatalogoExercicios catalogo = CatalogoExercicios.getCatalogo();
 		
 		Equipamento equip01 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Halteres, 
-																 "EQUIP_18", 50);
+																 "HAL01", 50);
 		Equipamento equip02 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Acessorios, 
-				 												 "EQUIP_35", 90);
+				 												 "ACE01_35", 90);
 		Equipamento equip03 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Maquinas, 
-				 												 "EQUIP_40", 76);
-		Exercicio exercicio = ExercicioBuilder.factory()
-											  .reset()
-											  .setDescricao("Leg Press 90°")
-											  .addTipoExercicio(TipoExercicio.Resistido)
-											  .addGrupoMuscular("Pernas")
-											  .addEquipamento(equip01)
-											  .addTipoExercicio(TipoExercicio.Funcional)
-											  .addEquipamento(equip02)
-											  .addGrupoMuscular("Panturrilha")
-											  .addEquipamento(equip03)
-											  .build();
+				 												 "MAQ_40", 76);
+		Equipamento equip04 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Acessorios, 
+				 												 "MAQ_94", 76);
 		
-		catalogo.findAll(exercicio.getDescricao());
+		Exercicio exercicio1 = ExercicioBuilder.createExercicio("Leg Press 90°")
+				  .addTipoExercicio(TipoExercicio.Resistido)
+				  .addGrupoMuscular("Pernas")
+				  .addTipoExercicio(TipoExercicio.Funcional)
+				  .addEquipamento(equip02)
+				  .addGrupoMuscular("Panturrilha")
+				  .addEquipamento(equip01)
+				  .build();
+		
+		System.out.println(exercicio1.toString());
+		
+		// Criação do Exercicio Supino Alternado
+		Exercicio exercicio2 = ExercicioBuilder.createExercicio("Supino Alternado°")
+				  .addGrupoMuscular("Biceps")
+				  .addTipoExercicio(TipoExercicio.Funcional)
+				  .addEquipamento(equip03)
+				  .addGrupoMuscular("Peitoral")
+				  .addEquipamento(equip04)
+				  .build();
+		
+		System.out.println(exercicio2.toString());
+		
+		// Criação de Exercicio 3 (sem nenhum parametro")
+		Exercicio exercicio3 = ExercicioBuilder.createExercicio("")
+				  .build();
+		
+		System.out.println(exercicio3.toString());
 	}
 	
-	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+	public static void main(String[] args) throws Exception {
 		Aplicacao app = new Aplicacao();
 		app.rodarQ1();
-		//app.rodarQ2();
+		app.rodarQ2();
 	}
 }

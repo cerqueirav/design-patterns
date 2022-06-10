@@ -1,7 +1,5 @@
 package br.edu.ifba.inf011.aval1.models;
 
-import br.edu.ifba.inf011.aval1.prototype.Prototipavel;
-
 public class Maquinas extends Equipamento{
 	private String descricao;
 	private String marca;
@@ -49,10 +47,5 @@ public class Maquinas extends Equipamento{
 			instance = new Maquinas(maquinas);
 		
 		return instance;
-	}
-	
-	@Override
-	public Prototipavel prototipar() {
-		return new Maquinas(this);
 	}
 }
