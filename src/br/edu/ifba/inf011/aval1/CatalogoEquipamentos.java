@@ -33,12 +33,12 @@ public class CatalogoEquipamentos {
 			else 
 				System.err.println("Erro ao criar o equipamento com o código: "+identificador +" (código utilizado por outro Tipo de Equipamento)");
 		}
-		
-		// Criação de um novo Equipamento (cujo identificador ainda foi não associado a nenhum equipamento)
-		Equipamento equipamento = EquipamentoFactory.novoEquipamento(tipoEquipamento, identificador, quantidade);
-		
-		this.equipamentos.put(equipamento.getIdentificador(), equipamento);		
+		else{
+			// Criação de um novo Equipamento (cujo identificador ainda foi não associado a nenhum equipamento)
+			Equipamento equipamento = EquipamentoFactory.novoEquipamento(tipoEquipamento, identificador, quantidade);
 			
+			this.equipamentos.put(equipamento.getIdentificador(), equipamento);		
+		}
 	}
 	
 	private void updateQtdById(String identificador, int quantidade) {

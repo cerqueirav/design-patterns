@@ -73,8 +73,6 @@ public class Aplicacao {
 		// Criação dos Exercicios (Testes)
 		System.out.println("\n[Testes unitários - Q2]\n");
 		
-		CatalogoExercicios catalogo = CatalogoExercicios.getCatalogo();
-		
 		Equipamento equip01 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Halteres, 
 																 "HAL01", 50);
 		Equipamento equip02 = EquipamentoFactory.novoEquipamento(TipoEquipamento.Acessorios, 

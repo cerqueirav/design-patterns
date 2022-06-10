@@ -11,7 +11,7 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-<h3>Primeira Expecificação 🟠</h3>
+<h3>Primeira Expecificação 🟢</h3>
      <p>
       Uma rede de academias está solicitando a confecção de um sistema, que suporte a prescrição de programas de treinamento, aulas, agendamento de avaliação, etc. Num       primeiro momento, o foco é a prescrição de programas de treinamento. Para isso, a equipe de projeto propôs o seguinte esquema de classes, que
       descreve os tipos de equipamentos disponíveis na academia e os exercícios que fazem parte dos programas de treinamento.
@@ -32,7 +32,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
         <li> V. Forneça um esquema de criação de Exercícios, que permita a criação de exercícios, indicando o seu
         nome, os seus tipos (Resistido, Funcional, Cardiovascular, Mobilidade), os grupos musculares
         envolvidos (quando for o caso) e os equipamentos que são utilizados na sua execução. A quantidade
-        de parâmetros é variável e exceto pelo nome, todos os parâmetros são opcionais. 🟠
+        de parâmetros é variável e exceto pelo nome, todos os parâmetros são opcionais. 🟢
      </ul>         
                 
 ##### Legenda
