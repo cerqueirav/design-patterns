@@ -24,7 +24,7 @@ public class CatalogoExercicios {
 		this.exercicios.put(exercicio.getDescricao(), exercicio);
 	}
 	
-	public void listar(String descricao) {
+	public void listar() {
 		for (Exercicio exercicio: this.exercicios.values()) 
 			System.out.println(exercicio.getDescricao());
 	}

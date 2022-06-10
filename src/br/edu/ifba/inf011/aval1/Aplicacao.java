@@ -4,9 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import br.edu.ifba.inf011.aval1.builder.ExercicioBuilder;
 import br.edu.ifba.inf011.aval1.builder.TipoExercicio;
-import br.edu.ifba.inf011.aval1.fm.AcessoriosFactory;
 import br.edu.ifba.inf011.aval1.fm.EquipamentoFactory;
-import br.edu.ifba.inf011.aval1.fm.HalteresFactory;
 import br.edu.ifba.inf011.aval1.fm.TipoEquipamento;
 import br.edu.ifba.inf011.aval1.models.Equipamento;
 import br.edu.ifba.inf011.aval1.models.Exercicio;
@@ -92,17 +90,6 @@ public class Aplicacao {
 				  .build();
 		
 		System.out.println(exercicio1.toString());
-		
-		// Criação do Exercicio Supino Alternado
-		Exercicio exercicio2 = ExercicioBuilder.createExercicio("Supino Alternado°")
-				  .addGrupoMuscular("Biceps")
-				  .addTipoExercicio(TipoExercicio.Funcional)
-				  .addEquipamento(equip03)
-				  .addGrupoMuscular("Peitoral")
-				  .addEquipamento(equip04)
-				  .build();
-		
-		System.out.println(exercicio2.toString());
 		
 		// Criação de Exercicio 3 (sem nenhum parametro")
 		Exercicio exercicio3 = ExercicioBuilder.createExercicio("")
